@@ -28,7 +28,7 @@ curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d text="HyperX
    make O=out ARCH=arm64 $DEF
        make -j$(nproc --all) O=out \
 				ARCH=arm64 \
-				LOCALVERSION=${KERNELNAME} \
+				LOCALVERSION=-${KERNELNAME} \
 				CROSS_COMPILE_ARM32=arm-eabi- \
 				CROSS_COMPILE=aarch64-elf- \
 				LD=aarch64-elf-ld.lld 2>&1 | tee build.log
