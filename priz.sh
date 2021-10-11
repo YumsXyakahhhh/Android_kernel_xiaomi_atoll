@@ -7,14 +7,15 @@ IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz
 DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
 VERSION=AOSP
 DEVICES=Miatoll
-KERNELNAME=HyperX-${VERSION}-${DEVICES}-${TANGGAL}
+KERNELNAME=Hypery-${VERSION}-${DEVICES}-${TANGGAL}
 START=$(date +"%s")
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 export ARCH=arm64
 export SUBARCH=arm64
-export KBUILD_BUILD_USER=FarizMaulana
-export KBUILD_BUILD_HOST=$DRONE_SYSTEM_HOST
-export chat_id="-1001594023636"
+export KBUILD_BUILD_USER=BAGAS
+export KBUILD_BUILD_HOST=xmikasaaaaa
+export chat_id="-1001258259919"
+export token="1956393048:AAF0V0m7bUqfdo9I7zmxhrPt_o1-JIsmjd4"
 export DEF="cust_defconfig"
 TC_DIR=${PWD}
 GCC64_DIR="${PWD}/gcc64"
@@ -23,7 +24,7 @@ export PATH="$TC_DIR/bin/:$GCC64_DIR/bin/:$GCC32_DIR/bin/:/usr/bin:$PATH"
 BUILD_DTBO=0
 SIGN_BUILD=0
 
-curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d text="HyperX kernel ${BRANCH} build has started" -d chat_id=${chat_id} -d parse_mode=HTML
+curl -s -X POST https://api.telegram.org/bot${TOKEN}/sendMessage -d text="Hypery kernel ${BRANCH} build has started" -d chat_id=${chat_id} -d parse_mode=HTML
 
    make O=out ARCH=arm64 $DEF
        make -j$(nproc --all) O=out \
@@ -90,4 +91,3 @@ if [[ -f ${IMAGE} &&  ${DTBO} ]]
 then
    mv -f $IMAGE ${DTBO} AnyKernel3
 fi
-
