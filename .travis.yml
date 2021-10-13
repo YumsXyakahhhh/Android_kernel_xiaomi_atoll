@@ -1,0 +1,13 @@
+language: ruby
+
+services:
+  - docker
+
+before_install:
+  - docker build -t docker pull shubhamvis98/kernel-builder:latest .
+  - docker ps -a
+  - docker run kernel-builder:latest .
+
+script:
+  - docker run kernel-builder:latest .
+
